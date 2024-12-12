@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  qt-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qt-print-app
+    volumes:
+      - ./src:/app/src  # Mountataan lähdekoodi konttiin
+    command: ["/bin/bash", "-c", "qmake && make && ./HelloWorld"]
+    working_dir: /app/src
